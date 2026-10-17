@@ -1,0 +1,19 @@
+{
+  "name": "dharanidharan-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Personal Portfolio website for Dharanidharan A (Freelance Web Developer)",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  },
+  "keywords": [
+    "portfolio",
+    "freelance-developer",
+    "web-developer",
+    "react",
+    "nextjs"
+  ],
+  "author": "Dharanidharan A <dharani2006lakshmi@gmail.com>",
+  "license": "MIT"
+}
