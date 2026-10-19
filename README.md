@@ -87,6 +87,6 @@ Then visit `http://localhost:3000` in your browser.
 - **Developer**: Dharanidharan A
 - **Email**: [dharani2006lakshmi@gmail.com](mailto:dharani2006lakshmi@gmail.com)
 - **GitHub**: [@dharani2006lakshmi-sys](https://github.com/dharani2006lakshmi-sys)
-- **LinkedIn**: [Dharanidharan A](https://www.linkedin.com/in/dharanidharan-a-115659321)
+- **LinkedIn**: [Dharanidharan A](https://www.linkedin.com/in/dharanidharan-dev)
 - **Instagram**: [@dharanidharan_2006](https://www.instagram.com/dharanidharan_2006)
 - **Location**: Available Worldwide (Remote)

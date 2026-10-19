@@ -202,7 +202,7 @@ const profileData = {
   location: "Available Worldwide (Remote)",
   email: "dharani2006lakshmi@gmail.com",
   github: "https://github.com/dharani2006lakshmi-sys",
-  linkedin: "https://www.linkedin.com/in/dharanidharan-a-115659321",
+  linkedin: "https://www.linkedin.com/in/dharanidharan-dev",
   instagram: "https://www.instagram.com/dharanidharan_2006",
   avatarUrl: "https://avatars.githubusercontent.com/u/266924753?v=4",
   stats: {
