@@ -1,6 +1,6 @@
 # 🚀 Dharanidharan A — Personal Portfolio
 
-Welcome to the official portfolio website of **Dharanidharan A**, Freelance Web Developer & 3rd-Year Computer Science student from Erode, Tamil Nadu, India.
+Welcome to the official portfolio website of **Dharanidharan A**, Freelance Web Developer & 3rd-Year Electronics & Communication Engineering (ECE) student.
 
 ---
 
@@ -89,4 +89,4 @@ Then visit `http://localhost:3000` in your browser.
 - **GitHub**: [@dharani2006lakshmi-sys](https://github.com/dharani2006lakshmi-sys)
 - **LinkedIn**: [Dharanidharan A](https://www.linkedin.com/in/dharanidharan-a-115659321)
 - **Instagram**: [@dharanidharan_2006](https://www.instagram.com/dharanidharan_2006)
-- **Location**: Erode, Tamil Nadu, India
+- **Location**: Available Worldwide (Remote)

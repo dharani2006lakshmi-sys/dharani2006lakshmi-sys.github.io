@@ -198,8 +198,8 @@ const projectsData = [
 const profileData = {
   name: "Dharanidharan A",
   nickname: "Dharani",
-  role: "Freelance Web Developer & 3rd-Year CS Student",
-  location: "Erode, Tamil Nadu, India",
+  role: "Freelance Web Developer & 3rd-Year ECE Student",
+  location: "Available Worldwide (Remote)",
   email: "dharani2006lakshmi@gmail.com",
   github: "https://github.com/dharani2006lakshmi-sys",
   linkedin: "https://www.linkedin.com/in/dharanidharan-a-115659321",

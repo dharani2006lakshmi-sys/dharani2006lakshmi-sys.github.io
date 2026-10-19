@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function initTypewriter() {
   const words = [
     "Freelance Web Developer",
-    "3rd-Year CS Undergrad @ Erode",
+    "3rd-Year ECE Undergrad",
     "React & Next.js Specialist",
     "Full-Stack Web Architect",
     "Turning Client Visions Into Code"
