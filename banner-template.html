@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 1584px;
+      height: 396px;
+      background: #070913;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #ffffff;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    /* Background Grid Pattern */
+    .grid-bg {
+      position: absolute;
+      inset: 0;
+      background-size: 36px 36px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      z-index: 1;
+    }
+
+    /* Ambient Glowing Neon Orbs */
+    .orb-1 {
+      position: absolute;
+      top: -80px;
+      left: 100px;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, transparent 70%);
+      filter: blur(50px);
+      z-index: 1;
+    }
+
+    .orb-2 {
+      position: absolute;
+      bottom: -60px;
+      right: 120px;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.28) 0%, transparent 70%);
+      filter: blur(60px);
+      z-index: 1;
+    }
+
+    .orb-3 {
+      position: absolute;
+      top: 50%;
+      right: 480px;
+      transform: translateY(-50%);
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+      filter: blur(50px);
+      z-index: 1;
+    }
+
+    /* Cyber Circuit Line Accents */
+    .circuit-line {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #6366f1, #06b6d4, transparent);
+      z-index: 2;
+    }
+
+    /* Main Content Container (Pushed right to clear the circular profile photo on left) */
+    .content {
+      position: relative;
+      z-index: 10;
+      margin-left: 380px;
+      width: calc(1584px - 440px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .left-col {
+      max-width: 680px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      color: #a5b4fc;
+      margin-bottom: 12px;
+    }
+
+    .green-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 10px #22c55e;
+    }
+
+    .headline {
+      font-family: 'Outfit', sans-serif;
+      font-size: 46px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .name-gradient {
+      background: linear-gradient(135deg, #ffffff 30%, #818cf8 70%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .sub-role {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 17px;
+      color: #94a3b8;
+      letter-spacing: 1px;
+      margin-bottom: 18px;
+    }
+
+    .sub-role span {
+      color: #38bdf8;
+    }
+
+    .tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: #e2e8f0;
+    }
+
+    .tag.primary {
+      background: rgba(99, 102, 241, 0.18);
+      border-color: rgba(99, 102, 241, 0.4);
+      color: #c7d2fe;
+    }
+
+    .tag.cyan {
+      background: rgba(6, 182, 212, 0.15);
+      border-color: rgba(6, 182, 212, 0.35);
+      color: #67e8f9;
+    }
+
+    /* Right Highlight Box */
+    .right-col {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 24px 28px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      min-width: 380px;
+    }
+
+    .metric-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      margin-bottom: 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .metric-item {
+      text-align: center;
+    }
+
+    .metric-val {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    .metric-val.blue { color: #60a5fa; }
+    .metric-val.cyan { color: #22d3ee; }
+    .metric-val.green { color: #4ade80; }
+
+    .metric-label {
+      font-size: 11px;
+      color: #94a3b8;
+      font-family: 'JetBrains Mono', monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .info-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #cbd5e1;
+      margin-top: 10px;
+    }
+
+    .info-link svg {
+      width: 16px;
+      height: 16px;
+      fill: #818cf8;
+      flex-shrink: 0;
+    }
+
+    .info-link span.bold {
+      color: #ffffff;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background decorations -->
+  <div class="grid-bg"></div>
+  <div class="orb-1"></div>
+  <div class="orb-2"></div>
+  <div class="orb-3"></div>
+
+  <div class="circuit-line" style="top: 35px; left: 300px; width: 600px;"></div>
+  <div class="circuit-line" style="bottom: 35px; right: 200px; width: 500px;"></div>
+
+  <!-- Main Content -->
+  <div class="content">
+    
+    <!-- Left Info -->
+    <div class="left-col">
+      <div class="status-badge">
+        <span class="green-dot"></span>
+        <span>OPEN FOR FREELANCE &amp; DEV ROLES</span>
+      </div>
+
+      <h1 class="headline">
+        <span class="name-gradient">Dharanidharan A</span>
+      </h1>
+
+      <div class="sub-role">
+        &lt;Freelance Web Developer /&gt; <span>&bull;</span> 3rd-Year ECE Undergrad
+      </div>
+
+      <div class="tags-row">
+        <div class="tag primary">⚛ React.js</div>
+        <div class="tag cyan">▲ Next.js</div>
+        <div class="tag">🎨 Tailwind CSS</div>
+        <div class="tag">⚡ Supabase</div>
+        <div class="tag">🔥 Firebase</div>
+        <div class="tag">🌐 Web Apps</div>
+      </div>
+    </div>
+
+    <!-- Right Highlight Box -->
+    <div class="right-col">
+      <div class="metric-row">
+        <div class="metric-item">
+          <div class="metric-val blue">12+</div>
+          <div class="metric-label">Live Projects</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val cyan">18+</div>
+          <div class="metric-label">GitHub Repos</div>
+        </div>
+        <div class="metric-item">
+          <div class="metric-val green">100%</div>
+          <div class="metric-label">On-Time Code</div>
+        </div>
+      </div>
+
+      <div class="info-link">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        <span>Portfolio: <span class="bold">dharanidharan-dev.vercel.app</span></span>
+      </div>
+
+      <div class="info-link">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span>Email: <span class="bold">dharani2006lakshmi@gmail.com</span></span>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
