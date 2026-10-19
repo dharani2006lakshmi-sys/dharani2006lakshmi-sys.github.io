@@ -373,13 +373,16 @@ function showToast(message) {
 }
 
 /* ----------------------------------------------------
-   11. Interactive Contact Form
+   11. Interactive Contact Form (Direct In-Site Delivery)
 ---------------------------------------------------- */
 function initContactForm() {
   const form = document.getElementById("contact-form");
   if (!form) return;
 
-  form.addEventListener("submit", (e) => {
+  const submitBtn = form.querySelector("button[type='submit']");
+  const originalBtnHtml = submitBtn ? submitBtn.innerHTML : "Send Message";
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const name = document.getElementById("form-name").value.trim();
     const email = document.getElementById("form-email").value.trim();
@@ -391,15 +394,77 @@ function initContactForm() {
       return;
     }
 
-    const subject = encodeURIComponent(`Project Inquiry: ${service} by ${name}`);
-    const body = encodeURIComponent(
-      `Hello Dharanidharan,\n\nMy name is ${name} (${email}).\nI am reaching out regarding: ${service}\n\nProject Details:\n${message}\n\nLooking forward to hearing from you!`
-    );
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-2"></i> Sending Message Directly...`;
+    }
 
-    const mailtoUrl = `mailto:${profileData.email}?subject=${subject}&body=${body}`;
-    window.location.href = mailtoUrl;
+    try {
+      const payload = {
+        name,
+        email,
+        service,
+        message,
+        date: new Date().toISOString()
+      };
 
-    showToast("Launching email client with pre-filled message!");
-    form.reset();
+      const response = await fetch("https://qrsufugtqumciqhceqdk.supabase.co/rest/v1/items", {
+        method: "POST",
+        headers: {
+          "apikey": "sb_publishable_0DMhS_QIM1cH8z8HsnBuVA_lyWv27MX",
+          "Authorization": "Bearer sb_publishable_0DMhS_QIM1cH8z8HsnBuVA_lyWv27MX",
+          "Content-Type": "application/json",
+          "Prefer": "return=representation"
+        },
+        body: JSON.stringify({
+          room_id: "777888",
+          type: "text",
+          content: JSON.stringify(payload)
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error("Server response was not OK");
+      }
+
+      // In-site success feedback
+      showToast("Message sent directly to Dharanidharan!");
+
+      let successBox = document.getElementById("form-success-box");
+      if (!successBox) {
+        successBox = document.createElement("div");
+        successBox.id = "form-success-box";
+        form.parentNode.insertBefore(successBox, form);
+      }
+
+      successBox.className = "mb-6 p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center";
+      successBox.innerHTML = `
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto mb-3 text-xl shadow-lg shadow-emerald-500/20">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <h4 class="text-white font-bold text-base mb-1">Inquiry Sent Successfully!</h4>
+        <p class="text-slate-300 text-xs leading-relaxed max-w-md mx-auto">
+          Thank you, <strong class="text-white">${escapeHtml(name)}</strong>! Your message has been sent directly to Dharanidharan's dashboard. I will review it and reply to <strong class="text-indigo-300 font-mono">${escapeHtml(email)}</strong> shortly.
+        </p>
+      `;
+
+      form.reset();
+
+    } catch (err) {
+      console.error("Direct send error:", err);
+      alert("Could not send directly at this moment. Please try again or reach out to dharani2006lakshmi@gmail.com");
+    } finally {
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+      }
+    }
   });
+}
+
+function escapeHtml(str) {
+  if (!str) return "";
+  const div = document.createElement("div");
+  div.textContent = str;
+  return div.innerHTML;
 }
