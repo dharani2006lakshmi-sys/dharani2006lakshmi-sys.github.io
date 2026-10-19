@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSpotlightEffect();
   initContactForm();
   initCopyEmail();
+  initSecretAdminShortcut();
 });
 
 /* ----------------------------------------------------
@@ -468,3 +469,38 @@ function escapeHtml(str) {
   div.textContent = str;
   return div.innerHTML;
 }
+
+/* ----------------------------------------------------
+   12. Secret Stealth Admin Shortcut (Hidden from visitors)
+   - Shortcut 1: Keyboard press Ctrl + Shift + D (or Alt + D)
+   - Shortcut 2: Triple-click the "D" brand logo in navbar
+---------------------------------------------------- */
+function initSecretAdminShortcut() {
+  // Keyboard Shortcut: Ctrl + Shift + D or Alt + D
+  window.addEventListener("keydown", (e) => {
+    if ((e.ctrlKey && e.shiftKey && (e.key === "D" || e.key === "d")) || (e.altKey && (e.key === "d" || e.key === "D"))) {
+      e.preventDefault();
+      window.location.href = "dashboard.html";
+    }
+  });
+
+  // Mobile / Mouse Shortcut: 3 rapid clicks on brand logo
+  const logo = document.querySelector("header a[href='#hero']");
+  if (logo) {
+    let clickCount = 0;
+    let timer = null;
+    logo.addEventListener("click", (e) => {
+      clickCount++;
+      clearTimeout(timer);
+      if (clickCount >= 3) {
+        e.preventDefault();
+        window.location.href = "dashboard.html";
+        clickCount = 0;
+      }
+      timer = setTimeout(() => {
+        clickCount = 0;
+      }, 1200);
+    });
+  }
+}
+
